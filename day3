@@ -1,0 +1,124 @@
+1/Move files from one folder to respective folder 
+Ans. for file in `ls *.txt`; do fname=`echo $file | awk -F. '{print $1}'`; mkdir $fname; mv $file $fname; done 
+ 
+ 
+2/ Append current date to all log files name which has extension .log.1 from a folder 
+ Ans. for file in `ls *.log.1`; do file2=`echo $file | awk -F.log '{print $1 "-"}'`; today=`date +"%d%m%y"`; filename=`echo $file2$today".log"`; mv $file $filename; done 
+ 
+ 
+ 3/Check if a folder exist or not, if not create 
+ Ans.	if [ -d "/PATH" ]; then 
+     		echo "folder already exist" 
+ 	else 
+    		mkdir assess 
+ 	fi 
+
+ 
+ /6 Data analysis/manipulation(AWK) 
+ Ans(i) cat Day3\ Probs01\ data.csv | awk -v x=500000 '$7>=x'| awk '{print $2 $7}' 
+ 
+ 
+   (ii) cat Day3\ Probs01\ data.csv | grep CAPTAIN | awk '{sum+=$7} END {print sum}' 
+  (iii) cat Day3\ Probs01\ data.csv | awk '$5>=7000 && $5<=10000'| awk '{print $3 " " $5}' 
+   (iv) cat Day3\ Probs01\ data.csv | awk '{sum+=$4} END {print sum/(NR-1)}' 
+ 
+ 7/ Create a process list table 
+ Ans. ps -eo pid,ppid,cmd,%mem,%cpu 
+
+#day3 prob01 data csv
+
+**We can make this file beautiful and searchable if this error is corrected: No commas found in this CSV file in line 0. 
+
+
+1 Id EmployeeName JobTitle        BasePay OvertimePay OtherPay TotalPay TotalPayBenefits 
+2 1  NATHANIEL    GM              167411  0           400184   567595   567595 
+3 2  GARY         CAPTAIN         155966  245131      137811   538909   538909 
+4 3  ALBERT       CAPTAIN         212739  106088      16452    335279   335279 
+5 4  CHRISTOPHER  MECHANIC        77916   56120       198306   332343   332343 
+6 5  PATRICK      DEPUTYCHIEF     134401  9737        182234   326373   326373 
+7 6  DAVID        ASSTDEPUTY      118602  8601        189082   316285   316285 
+8 7  ALSON        BATTALIONCHIEF  92492   89062       134426   315981   315981 
+9 8  DAVID        DEPUTYDIRECTOR  256576  0           51322    307899   307899 
+10 10 JOANNE       CHIEF           285262  0           17115    302377   302377 
+11 12 PATRICIA     CAPTAIN         99722   87082       110804   297608   297608 
+12 13 EDWARD       EXECUTIVE       294580  0           0        294580   294580 
+
+#create folder.sh
+#5 Check if a folder exist or not, if not create 
+ 
+ 
+ path="assess" 
+ if [ -d "$path" ]; then 
+ 	echo "folder already exist" 
+ else 
+ 	mkdir $path 
+ fi 
+
+#data analysis.sh
+#6 Data analysis/manipulation(AWK) 
+  
+ 
+ cat Day3\ Probs01\ data.csv | awk -v x=10000 '$7>=x'| awk '{print $2 $7}' 
+ 
+ #cat Day3\ Probs01\ data.csv | grep CAPTAIN | awk '{sum+=$7} END {print sum}' 
+ 
+ 
+ #cat Day3\ Probs01\ data.csv | awk '$5>=7000 && $5<=10000'| awk '{print $3 " " $5}' 
+ 
+
+ #cat Day3\ Probs01\ data.csv | awk '{sum+=$4} END {print sum/(NR-1)}'  
+
+
+
+#move file.sh
+#!/bin/bash 
+ 
+ 
+ #Move file to it's respective folder 
+ 
+ 
+ for file in `ls *.txt` 
+ do  
+ 	fname=`echo $file | awk -F. '{print $1}'` 
+ 	mkdir $fname 
+ 	mv $file $fname 
+ done
+
+ 
+
+#process list.sh
+#!bin/bash 
+ 
+ 
+ #show process list 
+ 
+ 
+ ps -eo pid,ppid,cmd,%mem,%cpu 
+
+
+#rename file.sh
+
+#!/bin/bash 
+ 
+ 
+ #Rename file  
+ 
+ 
+ for file in `ls *.log.1` 
+ do  
+ 	file2=`echo $file | awk -F.log '{print $1 "-"}'` 
+	today=`date +"%d%m%y"` 
+ 	filename=`echo $file2$today".log"` 
+ 	mv $file $filename 
+ done 
+
+#word occurance
+#!bin/bash 
+ 
+ 
+ #Find a word systemd from all log file in folder /var/log 
+ 
+ 
+ grep -wc systemd /var/log 
+
+
