@@ -16,3 +16,557 @@ case "$num" in
 	6)	echo "Friday";;
 	7)	echo "Saturday";;
 esac
+digit to word
+#!/bin/bash
+
+# Read a single digit number and write in word using case
+
+echo "Enter Single Digit Number:"
+read num
+
+case "$num" in
+	1)	echo "One";;
+	2)	echo "Two";
+
+	3)	echo "Three";;
+	4)	echo "Four";;
+	5)	echo "Five";;
+	6)	echo "Six";;
+	7)	echo "Seven";;
+	8)	echo "Eight";;
+	9)	echo "Nine";;
+esac 
+
+
+
+place value.sh
+# Read a Number 1, 10, 100, 1000, etc and display unit, ten, hundred,...
+
+#!/bin/bash
+
+read num
+
+
+case $num in
+	1) echo "Unit";;
+	10) echo "Ten";;
+	100) echo "Hundred";;
+	1000) echo "Thousand";;
+esac
+
+unit conversion
+echo "For the unit conversion enter no between 1-4
+Type '1' to conver feet to inch
+Type '2' to conver feet to meter
+Type '3' to conver inch to feet
+Type '4' to conver meter to feet"
+read num
+
+echo "Enter parameter : "
+read param
+
+case $num in
+	1)
+		result=`echo $param | awk '{print $1*12}'`
+		echo "$param feet = $result inches";;
+	2)
+		result=`echo $param | awk '{print $1*0.3048}'`
+		echo "$param feet = $result meter";;
+	3)
+		result=`echo $param | awk '{print $1*0.0833}'`
+		echo "$param inches = $result feet";;
+	4)
+		result=`echo $param | awk '{print $1*3.2808}'`
+		echo "$param meter = $result feet";;
+esac
+
+
+#selection if elif else
+digit to weekday.sh
+# Read a single digit number and write in word 
+ 
+ 
+ #!/bin/bash 
+ read num 
+ 
+ 
+ if [ $num == 1 ]; 
+ then 
+ 	echo "Sunday"; 
+ elif [ $num == 2 ]; 
+ then 
+ 	echo "Monday"; 
+ elif [ $num == 3 ]; 
+ then 
+ 	echo "Tuesday"; 
+ elif [ $num == 4 ]; 
+ then 
+ 	echo "Wednesday"; 
+ elif [ $num == 5 ]; 
+ then 
+ 	echo "Thursday"; 
+ elif [ $num == 6 ]; 
+ then 
+ 	echo "Friday"; 
+ elif [ $num == 7 ]; 
+ then 
+ 	echo "Saturday"; 
+fi 
+
+
+digit to word
+#Read a single digit number and write in word 
+ 
+ 
+ #!/bin/bash 
+ read num 
+ 
+ 
+ if [ $num == 1 ]; 
+ then 
+ 	echo "One"; 
+ elif [ $num == 2 ]; 
+ then 
+ 	echo "Two"; 
+ elif [ $num == 3 ]; 
+ then 
+ 	echo "Three"; 
+ fi
+ 
+
+
+expression.sh
+
+
+#Enter 3 number do following expression and find maximum and minimum 
+ 
+ 
+ #!/bin/bash 
+ 
+ 
+echo "Enter value of a" 
+ read a 
+ echo "Enter value of b" 
+ read b 
+ echo "Enter value of c" 
+ read c 
+ 
+ 
+ exp1=$((a+b*c)); 
+ exp2=$((a%b+c)); 
+ exp3=$((c+a/b)); 
+ exp4=$((a*b+c)); 
+ 
+  echo "Value of Expressions are: " $exp1 $exp2 $exp3 $exp4 
+ 	 
+ #for maximum value 
+ if [ $exp1 -gt $exp2 ] && [ $exp1 -gt $exp3 ] && [ $exp1 -gt $exp4 ]; 
+ then 
+ 	echo "Exp1 is max" 
+ elif [ $exp2 -gt $exp1 ] && [ $exp2 -gt $exp3 ] && [ $exp2 -gt $exp4 ]; 
+ then 
+ 	echo "Exp2 is max" 
+ elif [ $exp3 -gt $exp1 ] && [ $exp3 -gt $exp2 ] && [ $exp3 -gt $exp4 ]; 
+ then 
+ 	echo "Exp3 is max"; 
+ else 
+ 	echo "Exp4 is max"; 
+ fi 
+ 
+ 
+ # for minimum value 
+ if [ $exp1 -lt $exp2 ] && [ $exp1 -lt $exp3 ] && [ $exp1 -lt $exp4 ]; 
+ then 
+ 	echo "Exp1 is min" 
+ elif [ $exp2 -lt $exp1 ] && [ $exp2 -lt $exp3 ] && [ $exp2 -lt $exp4 ]; 
+ then 
+ 	echo "Exp2 is min" 
+ elif [ $exp3 -lt $exp1 ] && [ $exp3 -lt $exp2 ] && [ $exp3 -lt $exp4 ]; 
+ then 
+ 	echo "Exp3 is min"; 
+ else 
+ 	echo "Exp4 is min"; 
+ fi 
+
+#place value.sh
+#Read a number 1,10,100,1000 etc and display unit, ten, hundred 
+ 
+ #!/bin/bash 
+ read num 
+ 
+ 
+ if [ $num == 1 ]; 
+ then 
+ 	echo "Unit"; 
+ elif [ $num == 2 ]; 
+ then 
+ 	echo "Ten"; 
+ elif [ $num == 3 ]; 
+ then 
+ 	echo "Hundred"; 
+ elif [ $num == 4 ]; 
+ then 
+ 	echo "Thousand"; 
+ elif [ $num == 5 ]; 
+ then 
+ 	echo "Ten Thousand"; 
+ fi 
+
+
+#selection if-else
+coinflip.sh
+#Write a program to simulate a coin flip and print out "Heads" or "Tails" accordingly. 
+ 
+ 
+ #!/bin/bash 
+ 
+ 
+ i=$((RANDOM%2)) 
+ 
+ 
+ echo $i 
+ if [ $i -eq 1 ] 
+ then 
+ 	echo "Heads" 
+ else 
+ 	echo "Tails" 
+ fi 
+
+date month
+#!/bin/bash 
+ 
+ 
+ read date_rel 
+ read month_rel 
+ 
+ 
+ result="false" 
+ 
+ 
+ if [ $month_rel -ge 3 ] && [ $month_rel -le 6 ] 
+ then 
+ 	month_days=$((30 + (month_rel%2))) 
+ 	if [ $date_rel -ge 1 ] && [ $date_rel -le $month_days ] 
+ 	then 
+ 		days=$(((month_rel*100) + date_rel)) 
+ 		if [ $days -ge 320 ] && [ $days -le 620 ] 
+ 		then 
+ 			result="true" 
+ 		fi 
+ 	fi 
+ fi 
+ 
+ 
+ echo "$date_rel - $month_rel $result" 
+
+
+Leap year
+#Write a program that takes a year as input and outputs the Year is a Leap Year or not a Leap Year. A Leap Year checks for 4 Digit Number, Divisible by 4 and not 100 unless divisible by 400. 
+ 
+ 
+ #!/bin/bash 
+ 
+ 
+ read num 
+ 
+ 
+ 
+ 
+ if [ $((num%4)) -eq 0 ] 
+ then 
+ 		if [ $((num%100)) -eq 0 ] 
+ 		then 
+ 				if [ $((num%400)) -eq 0 ] 
+ 				then 
+ 					echo "$num is a Leap year" 
+ 				else 
+ 					echo "$num is Not a leap year" 
+ 				fi 
+ 		else 
+ 			echo "$num is a leap year" 
+ 		fi 
+ else 
+ 	echo "Not a leap year" 
+ fi 
+
+#min max
+
+# Write a program that reads 5 Random 3 Digit values and then outputs the minimum and the maximum value 
+ echo "Enter integer value" 
+ read number 
+ array=() 
+ for (( i=0; i<$number; i++ )) 
+ do 
+ 	a=$(( ( RANDOM % 899) + 100 )) 
+ 	array[((i))]+=$a 
+ done 
+ echo "${array[@]} is array"  
+ 
+ 
+ max_value=${array[0]} 
+ min_value=${array[0]} 
+ 
+ 
+ for i in "${array[@]}" 
+ do 
+ 	if [ $i -gt $max_value ] 
+ 	then 
+ 		max_value=$i 
+ 	fi 
+ 	if [ $i -le $min_value ] 
+ 	then 
+ 		min_value=$i 
+ 	fi 
+ done 
+ echo "$max_value is max and $min_value is min" 
+
+
+#sequence pp
+#add 2dice num.sh
+# Add two random dice number and print result. 
+ 
+ 
+ #!/bin/bash 
+ 
+ 
+ one_dice=`echo $((RANDOM%6))`; sec_dice=`echo $((RANDOM%6))`; echo $one_dice; echo $sec_dice; echo $((one_dice+sec_dice))
+  
+
+#dice num.sh
+#Use random function to get dice number between 1-6. 
+ 
+ 
+ #!/bin/bash 
+ echo $(( RANDOM % 5 + 1 )) 
+
+
+
+#random num.sh
+ #Use random function to get single digit.  
+ 
+ #!/bin/bash 
+ echo $((RANDOM%10)) 
+
+#sum and average.sh
+
+# Write a program that read 5 random 2 digit value, then find their sum and avarage. 
+ 
+ 
+ #!/bin/bash 
+ echo "Enter number:" 
+ read a 
+ sum=0 
+ echo "$a Random generated numbers" 
+ for (( i=a; i >= 1; i-- )); 
+ do 
+ 	b=`echo $((RANDOM%10))` 
+ 	echo $b 
+ 	sum=$((sum+b)) 
+ done 
+ echo "Sum = "$sum "and Avarage = "$((sum/a)) 
+
+#unit conversion.sh
+#!bin/bash 
+ 
+ 
+ #a. 1ft = 12 in then 42 in = ? ft 
+ echo "Enter parameter to convert the value from inch to feet" 
+ read param 
+ unit_con=`echo $param | awk '{print $1*0.0833}'` 
+ echo "$param inch = $unit_con feet" 
+ 
+ 
+ #b. Rectangular Plot of 60 feet x 40 feet in meters 
+ echo "Enter the length and breadth of rectangle in feet and calculate the area in meter" 
+ read length 
+ read breadth 
+ area_of_rectangle=`echo $length $breadth | awk '{print $1*$2*0.3048}'` 
+ echo "$area_of_rectangle meter is a area of rectangle" 
+ 
+ 
+ 
+ 
+ #c. Calculate area of 25 such plots in acres 
+ echo "Enter no of total plots" 
+ read no_of_plot 
+ total_area=`echo $area_of_rectangle $no_of_plot | awk '{print $1*$2}'` 
+ echo "area of n such plots is $total_area acres" 
+
+#day5 sequence pp
+
+# Sequences PP 
+ 
+ 
+ 1. Use random function to get single digit. 
+ Ans. echo $((RANDOM%10)) 
+ 
+ 
+ 2. Use random function to get dice number between 1-6. 
+ Ans. echo $((RANDOM%6)) 
+ 
+ 
+ 3. Add two random dice number and print result.\\ 
+ Ans. one_dice=`echo $((RANDOM%6))`; sec_dice=`echo $((RANDOM%6))`; echo $one_dice; echo $sec_dice; echo $((one_dice+sec_dice)) 
+ 
+ 
+ 4. Write a program that read 5 random 2 digit value, then find their sum and avarage. 
+ Ans.	echo "Enter number:" 
+ 	read a 
+ 	sum=0 
+ 	echo "$a Random generated numbers" 
+ 	for (( i=a; i >= 1; i-- )); 
+ 	do 
+ 		b=`echo $((RANDOM%10))` 
+ 		echo $b 
+ 		sum=$((sum+b)) 
+ 	done 
+ 	echo "Sum = "$sum "and Avarage = "$((sum/a)) 
+ 
+ 
+ 
+ 
+ # Selection PP with if, elif and else 
+ 
+ 
+ 1. Read a single digit number and write in word 
+ Ans.    read num 
+ 
+ 
+ 	if [ $num == 1 ]; 
+ 	then 
+ 		echo "One"; 
+ 	elif [ $num == 2 ]; 
+ 	then 
+ 		echo "Two"; 
+ 	elif [ $num == 3 ]; 
+ 	then 
+ 		echo "Three"; 
+ 	fi 
+ 
+ 
+ 2. Read a number and display the week day 
+ Ans.    read num 
+ 
+ 	if [ $num == 1 ]; 
+ 	then 
+ 		echo "Sunday"; 
+ 	elif [ $num == 2 ]; 
+ 	then 
+ 		echo "Monday"; 
+ 	elif [ $num == 3 ]; 
+ 	then 
+ 		echo "Tuesday"; 
+ 	elif [ $num == 4 ]; 
+ 	then 
+ 		echo "Wednesday"; 
+ 	elif [ $num == 5 ]; 
+ 	then 
+ 		echo "Thursday"; 
+ 	elif [ $num == 6 ]; 
+ 	then 
+ 		echo "Friday"; 
+ 	elif [ $num == 7 ]; 
+ 	then 
+ 		echo "Saturday"; 
+ 	fi 
+
+ 
+ 3. Read a number 1,10,100,1000 etc and display unit, ten, hundred 
+ Ans.    read num 
+ 
+ 
+ 	if [ $num == 1 ]; 
+ 	then 
+ 		echo "Unit"; 
+ 	elif [ $num == 2 ]; 
+ 	then 
+ 		echo "Ten"; 
+ 	elif [ $num == 3 ]; 
+ 	then 
+ 		echo "Hundred"; 
+ 	elif [ $num == 4 ]; 
+ 	then 
+ 		echo "Thousand"; 
+ 	elif [ $num == 5 ]; 
+ 	then 
+ 		echo "Ten Thousand"; 
+ 	fi 
+ 
+ 
+ 4. Enter 3 number do following expression and find maximum and minimum 
+ Ans.	read a 
+ 	read b 
+ 	read c 
+ 
+ 
+ 	exp1=$((a+b*c)); 
+ 	exp2=$((a%b+c)); 
+ 	exp3=$((c+a/b)); 
+ 	exp4=$((a*b+c)); 
+ 
+ 
+ 	echo $exp1 $exp2 $exp3 $exp4 
+ 	 
+ 	#for maximum value 
+ 	if [ $exp1 -gt $exp2 ] && [ $exp1 -gt $exp3 ] && [ $exp1 -gt $exp4 ]; 
+ 	then 
+ 		echo "Exp1 is max" 
+ 	elif [ $exp2 -gt $exp1 ] && [ $exp2 -gt $exp3 ] && [ $exp2 -gt $exp4 ]; 
+ 	then 
+ 		echo "Exp2 is max" 
+ 	elif [ $exp3 -gt $exp1 ] && [ $exp3 -gt $exp2 ] && [ $exp3 -gt $exp4 ]; 
+ 	then 
+ 		echo "Exp3 is max"; 
+ 	else 
+ 		echo "Exp4 is max"; 
+ 	fi 
+ 
+ 
+ 	# for minimum value 
+ 	if [ $exp1 -lt $exp2 ] && [ $exp1 -lt $exp3 ] && [ $exp1 -lt $exp4 ]; 
+ 	then 
+ 		echo "Exp1 is min" 
+ 	elif [ $exp2 -lt $exp1 ] && [ $exp2 -lt $exp3 ] && [ $exp2 -lt $exp4 ]; 
+ 	then 
+ 		echo "Exp2 is min" 
+ 	elif [ $exp3 -lt $exp1 ] && [ $exp3 -lt $exp2 ] && [ $exp3 -lt $exp4 ]; 
+ 	then 
+ 		echo "Exp3 is min"; 
+ 	else 
+ 		echo "Exp4 is min"; 
+ 	fi 
+ 
+ 
+ # Selection PP with case statement 
+ 
+ 
+ 1. Read a single digit number and write in word using case 
+ Ans.    echo "Enter Single Digit Number:" 
+ 	read num 
+ 	 
+ 	case "$num" in 
+ 		1)	echo "One";; 
+ 		2)	echo "Two";; 
+ 		3)	echo "Three";; 
+ 		4)	echo "Four";; 
+ 		5)	echo "Five";; 
+ 		6)	echo "Six";; 
+ 		7)	echo "Seven";; 
+ 		8)	echo "Eight";; 
+ 		9)	echo "Nine";; 
+ 	esac 
+ 
+ 
+ 2. Read a number and display the week day using case 
+ Ans.    echo "Enter Single Digit Number (1-7):" 
+ 	read num 
+ 	 
+ 	case "$num" in 
+ 		1)	echo "Sunday";; 
+ 		2)	echo "Monday";; 
+ 		3)	echo "Tuesday";; 
+ 		4)	echo "Wednesday";; 
+ 		5)	echo "Thursday";; 
+ 		6)	echo "Friday";; 
+ 		7)	echo "Saturday";; 
+ 	esac 
